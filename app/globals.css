@@ -3,19 +3,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme {
+@theme inline {
 	--font-poppins: "Poppins", sans-serif;
 	--color-shop-light-pink: #fcf0e4;
 	--color-shop-dark-green: #063c28;
 	--color-shop-btn-dark-green: #063d29;
-	--color-shop-light-bg: #f6f6f6;
 	--color-shop-light-green: #3b9c3c;
+	--color-shop-light: #f6f6f6;
+	--color-shop-dark: #999999;
 	--color-shop-orange: #fb6c08;
 	--color-dark-color: #151515;
-	--color-light-color: #52525b;
-}
-
-@theme inline {
+	--color-gray-color: #52525b;
+	--color-bt-blue: #004165;
+	--color-bt-yellow: #fdd34f;
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
@@ -128,5 +128,17 @@
 	}
 	body {
 		@apply bg-background text-foreground;
+	}
+	button {
+		@apply cursor-pointer;
+	}
+	.hoverEffect {
+		@apply transition-all duration-300 ease-in-out;
+	}
+	.navAdminIcon {
+		@apply w-5 h-5 text-shop-light hover:text-bt-yellow;
+	}
+	.navAdminIconNum {
+		@apply absolute -top-1 -right-1 bg-shop-light text-shop-dark-green h-3.5 w-3.5 rounded-full text-xs font-semibold flex items-center justify-center leading-none;
 	}
 }
