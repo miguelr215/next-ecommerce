@@ -7,8 +7,13 @@ import CartIcon from './CartIcon'
 import FavoriteButton from './FavoriteButton'
 import SignInBtn from './SignInBtn'
 import MobileMenu from './MobileMenu'
+import { currentUser } from '@clerk/nextjs/server'
+import { ClerkLoaded, SignedIn, UserButton } from '@clerk/nextjs'
 
-const Header = () => {
+const Header = async () => {
+    const user = await currentUser();
+    // console.log('user: ', user);
+
     return (
         <header className='bg-bt-blue py-5'>
             <Container className='flex items-center justify-between'>
@@ -21,7 +26,12 @@ const Header = () => {
                     <SearchBar />
                     <CartIcon />
                     <FavoriteButton />
-                    <SignInBtn />
+                    <ClerkLoaded>
+                        <SignedIn>
+                            <UserButton />
+                        </SignedIn>
+                        {!user && <SignInBtn />}
+                    </ClerkLoaded>
                 </div>
             </Container>
         </header>
